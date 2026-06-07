@@ -1,16 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; 
 
 export default function Home() {
   const [producto, setProducto] = useState({
+    
     nombre: '',
     precioCompra: '',
     precioVenta: '',
   });
 
   const [productos, setProductos] = useState<any[]>([]);
+useEffect(() => {
+  const productosGuardados = localStorage.getItem('productos');
 
+  if (productosGuardados) {
+    setProductos(JSON.parse(productosGuardados));
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem('productos', JSON.stringify(productos));
+}, [productos]);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProducto({
       ...producto,

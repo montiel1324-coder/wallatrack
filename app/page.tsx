@@ -51,12 +51,13 @@ const editarProducto = (index: number) => {
     setProductos([...productos, producto]);
   }
 
- setProducto({
+setProducto({
   nombre: '',
   precioCompra: '',
   precioVenta: '',
   procedencia: '',
   fechaCompra: '',
+  fechaVenta: '',
 });
 };
   return (
